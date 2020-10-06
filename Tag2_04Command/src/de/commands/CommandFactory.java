@@ -2,24 +2,20 @@ package de.commands;
 
 public class CommandFactory {
 	
+	private static final String PREFIX = "de.commands.";
+	private static final String SUFFIX = "Command";
+	
 	public static Command create(final String zeile) {
-		Command result = null;
-		String [] tokens = zeile.split(" ");
-		switch (tokens[0]) {
-		case "Add":
-			result = new AddCommand();
+		try {
+			
+			String [] tokens = zeile.split(" ");
+			Command result = (Command) Class.forName(PREFIX + tokens[0] + SUFFIX).newInstance();
 			result.parse(tokens);
-			break;
-
-		case "Print":
-			result = new PrintCommand();
-			result.parse(tokens);
-			break;
-
-		default:
-			break;
+			return result;
+		} catch (Throwable e) {
+			e.printStackTrace();
 		}
-		return result;
+		return null;
 	}
 
 }
