@@ -1,6 +1,6 @@
 package de.template;
 
-public abstract class AbstractCounter extends FileProcessor {
+public abstract class AbstractCounter implements CharacterHandler {
 
 	protected int counter;
 

@@ -1,8 +1,19 @@
 package de.template;
 
 import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class FileProcessor {
+public class FileProcessor {
+	private final List<CharacterHandler> handlers = new ArrayList<>();
+	
+	public void addCharacterHandler(final CharacterHandler handler) {
+		handlers.add(handler);
+	}
+	
+	public void removeCharacterHandler(final CharacterHandler handler) {
+		handlers.remove(handler);
+	}
 	
 	public final void run(final String filename) {
 		try(FileReader reader = new FileReader(filename)) {
@@ -19,14 +30,16 @@ public abstract class FileProcessor {
 		}
 	}
 	
-	public void init() {
-		
+	private void init() {
+		handlers.forEach(CharacterHandler::init);
 	}
 	
-	public abstract void process(final char c) ;
+	private void process(final char c) {
+		handlers.forEach(h->h.process(c));
+	}
 	
-	public void close() {
-		
+	private void close() {
+		handlers.forEach(CharacterHandler::close);
 	}
 
 }
