@@ -1,0 +1,2 @@
+Statt Node -> Kontogruppe : Container für andere Kontogruppen und Konten
+Statt Leaf -> Konto : zusätzlich die Eigenschaft saldo:double 
