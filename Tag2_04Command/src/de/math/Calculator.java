@@ -15,13 +15,7 @@ public class Calculator {
 	
 	private double memory = 0;
 
-	public double getMemory() {
-		return memory;
-	}
-
-	public void setMemory(double memory) {
-		this.memory = memory;
-	}
+	
 	
 	public void add(double value) {
 		memory += value;
