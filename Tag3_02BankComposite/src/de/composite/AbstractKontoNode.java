@@ -50,11 +50,10 @@ public abstract class AbstractKontoNode implements KontoNode {
 	
 	@Override
 	public void print() {
-		System.out.println(this);
-		for (final KontoNode child : getChildren()) {
-			child.print();
-		}
-		
+//		Iterator<KontoNode> it = iterator();
+//		while(it.hasNext())
+//			System.out.println(it.next());
+		iterator().forEachRemaining(System.out::println);
 	}
 
 	@Override
