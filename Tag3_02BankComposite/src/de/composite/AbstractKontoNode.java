@@ -1,6 +1,8 @@
 package de.composite;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 public abstract class AbstractKontoNode implements KontoNode {
@@ -55,6 +57,19 @@ public abstract class AbstractKontoNode implements KontoNode {
 //			System.out.println(it.next());
 		iterator().forEachRemaining(System.out::println);
 	}
+
+	@Override
+	public Iterator<KontoNode> iterator() {
+		final List<KontoNode> list = new ArrayList<KontoNode>();
+		iteratorImpl(list);
+		return list.iterator();
+	}
+	
+	private void iteratorImpl(final List<KontoNode> list) {
+		list.add(this);
+		getChildren().forEach(c->c.iteratorImpl(list));
+	}
+
 
 	@Override
 	public String toString() {

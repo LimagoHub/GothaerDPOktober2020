@@ -1,5 +1,7 @@
 package de.composite;
 
+import java.util.Iterator;
+
 public class Konto extends AbstractKontoNode {
 
 	private double saldo = 0;
@@ -26,6 +28,12 @@ public class Konto extends AbstractKontoNode {
 		builder.append(getParent());
 		builder.append("]");
 		return builder.toString();
+	}
+
+	@Override
+	public Iterator<KontoNode> iterator() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

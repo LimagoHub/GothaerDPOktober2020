@@ -52,7 +52,7 @@ public class Table implements AutoCloseable{
 
 	private void excangeData() throws Exception{
 		for( int column = 0; column < getColumnCount(); column++) {
-			getZeile().put(getColumnName(column), getResultSet().getNString(getColumnName(column)));
+			getZeile().put(getColumnName(column), getResultSet().getString(getColumnName(column)));
 		}
 		
 	}
